@@ -1,0 +1,83 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 30
+    defaultConfig {
+        applicationId "com.pasc.ads.project"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 15
+        versionName "1.5.0"
+
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            //设置支持的SO库架构（开发者可以根据需要，选择一个或多个平台的so）
+            abiFilters "armeabi-v7a"
+        }
+
+        // ARouter 路由配置
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+
+        sourceSets {
+            main {
+                res.srcDirs = ['src/main/res',
+                               'src/main/res-theme']
+            }
+        }
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            buildConfigField "boolean", "PRODUCT_MODE", "true"
+            buildConfigField "int", "PRODUCT_FLAVORS_TYPE", "1"
+            //signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            minifyEnabled false
+            buildConfigField "boolean", "PRODUCT_MODE", "false"
+            buildConfigField "int", "PRODUCT_FLAVORS_TYPE", "2"
+//            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation "com.android.support:appcompat-v7:${supportLibraryVersion}"
+
+    // ARouter
+    api 'com.github.AndroidLee0316:router:support_1.0.0'
+    annotationProcessor "com.alibaba:arouter-compiler:${rootProject.ext.arouterCompiler}"
+
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.squareup.phrase:phrase:1.1.0'
+    implementation  'com.github.AndroidLee0316:base:support_1.0.0'
+    api 'com.github.AndroidLee0316:zxs_net:support_2.0.0'
+    implementation LIB_HYBRID
+
+
+//    if (isMavenBuild == 'false') {
+        api project(':LibDisplayAds')
+//    } else {
+//        api "com.pasc.lib:displayads:${aarDisplayAdsVersion}"
+//    }
+
+}

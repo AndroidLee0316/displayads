@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <color name="ads_white_ffffff">#ffffff</color>
+    <color name="ads_black_333333">#333333</color>
+    <color name="ads_gray_666666">#666666</color>
+    <color name="ads_gray_dddddd">#dddddd</color>
+    <color name="ads_gray_2e332f">#2e332f</color>
+    <color name="ads_color_call_phone_btn">#469cf1</color>
+
+
+    <color name="ads_dialog_notice_title_color">#ffffff</color>
+    <color name="ads_dialog_notice_content_color">#2e332f</color>
+
+    <!--透明-->
+    <color name="ads_transparent_00">#00000000</color>
+    <color name="ads_transparent_ff">#00ffffff</color>
+    <color name="ads_transparent_half">#30000000</color>
+
+</resources>

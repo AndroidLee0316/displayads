@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">PascDisplayAds</string>
+
+    <string name="ads_splash_skip_count_down">跳过 {count}</string>
+    <string name="ads_common_dialog_sure">呼叫</string>
+    <string name="ads_common_dialog_cancel">取消</string>
+
+    <string name="ads_dialog_notice_title_string">公告</string>
+
+</resources>
